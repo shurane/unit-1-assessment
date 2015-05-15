@@ -1,0 +1,11 @@
+- robolectric 3.0rc2
+- TileActivity
+    - LinearLayout 
+        -> LinearLayout (ImageView 40%, ImageView 60%)
+        -> LinearLayout (ImageView 33%, ImageView 44%, ImageView, 22%)
+        -> SeekBar
+- Intents -- switch between different activities
+    - InitialActivity
+        -> TileActivity
+        -> LinkActivity
+        -> BigTextActivity
