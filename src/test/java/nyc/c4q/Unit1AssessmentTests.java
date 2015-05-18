@@ -1,6 +1,7 @@
 package nyc.c4q;
 
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -53,8 +54,10 @@ public class Unit1AssessmentTests {
         assertTrue("leftSide is not a LinearLayout", leftSide instanceof LinearLayout);
         assertTrue("rightSide is not a LinearLayout", rightSide instanceof LinearLayout);
 
-        assertTrue("LinearLayout(@+id/activity_tile)[0] == LinearLayout(@+id/leftSide)", leftSide == leftSideById);
-        assertTrue("LinearLayout(@+id/activity_tile)[1] == LinearLayout(@+id/rightSide)", rightSide == rightSideById);
+        assertTrue("LinearLayout(@+id/activity_tile)[0] should be equal to LinearLayout(@+id/leftSide)",
+                leftSide == leftSideById);
+        assertTrue("LinearLayout(@+id/activity_tile)[1] should be equal to LinearLayout(@+id/rightSide)",
+                rightSide == rightSideById);
 
         LinearLayout leftSideLayout = (LinearLayout) leftSide;
         LinearLayout rightSideLayout = (LinearLayout) rightSide;
@@ -67,8 +70,17 @@ public class Unit1AssessmentTests {
         View white = rightSideLayout.getChildAt(1);
         View blue = rightSideLayout.getChildAt(2);
 
-        // TODO figure out how to get weights of the views -- worst case is to calculate related to screen width/height
+        assertTrue("LinearLayout(@+id/leftSide).getOrientation() should be vertical",
+                leftSideLayout.getOrientation() == LinearLayout.VERTICAL);
+        assertTrue("LinearLayout(@+id/rightSide).getOrientation() should be vertical",
+                leftSideLayout.getOrientation() == LinearLayout.VERTICAL);
 
+        Log.d("Unit1Assessment", String.format("red:%d, green: %d, yellow: %d, white: %d, blue: %d",
+                ((LinearLayout.LayoutParams) red.getLayoutParams()).weight,
+                ((LinearLayout.LayoutParams) green.getLayoutParams()).weight,
+                ((LinearLayout.LayoutParams) yellow.getLayoutParams()).weight,
+                ((LinearLayout.LayoutParams) white.getLayoutParams()).weight,
+                ((LinearLayout.LayoutParams) blue.getLayoutParams()).weight));
         // TODO test on dp, padding, padding around the views
 
     }
