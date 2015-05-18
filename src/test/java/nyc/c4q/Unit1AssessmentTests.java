@@ -16,6 +16,7 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -66,27 +67,35 @@ public class Unit1AssessmentTests {
         Button buttonPlus = (Button) counterButtonsLayout.getChildAt(0);
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should have R.id.buttonPlus", getResourceId(buttonPlus).equals("buttonPlus"));
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should be equal to LinearLayout(@+id/buttonPlus)", buttonPlus == findViewByIdString(activity, "buttonPlus"));
+        assertEquals("+", buttonPlus.getText());
 
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should be a Button", counterButtonsLayout.getChildAt(1) instanceof Button);
         Button buttonMinus = (Button) counterButtonsLayout.getChildAt(1);
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should have R.id.buttonMinus", getResourceId(buttonMinus).equals("buttonMinus"));
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should be equal to LinearLayout(@+id/buttonMinus)", buttonMinus == findViewByIdString(activity, "buttonMinus"));
+        assertEquals("-", buttonMinus.getText());
 
         View tvCounter = counterLayout.getChildAt(1);
         assertTrue("LinearLayout(@+id/activity_initial)[0][1] should be equal to TextView(@+id/tvCounter)",
                 tvCounter instanceof TextView && getResourceId(tvCounter).equals("tvCounter"));
+        assertEquals("0", ((TextView) tvCounter).getText());
 
         View buttonTileActivity = layout.getChildAt(1);
         assertTrue("LinearLayout(@+id/activity_initial)[1] should be equal to Button(@+id/buttonTileActivity)",
                 buttonTileActivity instanceof Button && getResourceId(buttonTileActivity).equals("buttonTileActivity"));
+        assertEquals("TileActivity", ((Button) buttonTileActivity).getText());
 
         View buttonNewsReaderActivity = layout.getChildAt(2);
         assertTrue("LinearLayout(@+id/activity_initial)[1] should be equal to Button(@+id/buttonNewsReaderActivity)",
                 buttonNewsReaderActivity instanceof Button && getResourceId(buttonNewsReaderActivity).equals("buttonNewsReaderActivity"));
+        assertEquals("NewsReaderActivity", ((Button) buttonNewsReaderActivity).getText());
 
         View buttonBigTextActivity = layout.getChildAt(3);
         assertTrue("LinearLayout(@+id/activity_initial)[1] should be equal to Button(@+id/buttonBigTextActivity)",
                 buttonBigTextActivity instanceof Button && getResourceId(buttonBigTextActivity).equals("buttonBigTextActivity"));
+        assertEquals("BigTextActivity", ((Button) buttonBigTextActivity).getText());
+
+        // TODO layout weights are important here
     }
 
     @Test
