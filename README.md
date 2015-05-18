@@ -1,17 +1,10 @@
-## Android Studio Support
+## Unit 1 Assessment Test
 
-This is designed to run against Android Studio 1.1.0 with
-"Unit Testing support" enabled in Studio's Gradle settings.
+This is designed to run with Android Studio with
+[Unit Testing support](https://sites.google.com/a/android.com/tools/tech-docs/unit-testing-support) enabled in Android Studio's Gradle settings.
 
 ### Importing
-Import the project into Android Studio by selecting 'Import Project' and selecting the project's `build.gradle`. When prompted, you can just pick the default gradle wrapper.
+Import the project into Android Studio by selecting `Import Project` and selecting the project's `build.gradle`. When prompted, you can pick the default gradle wrapper.
 
-### Running the Robolectric Test
-To run Robolectric tests (example can be found in DeckardActivityTest) open Studio's
-"Build Variants" pane and change the "Test Artifact" to "Unit Tests". You can then run
-Robolectric tests using the JUnit test runner.
-
-### Running the Espresso Test
-To run Robolectric tests (example can be found in DeckardEspressoTest) open Studio's
-"Build Variants" pane and change the "Test Artifact" to "Android Instrumentation Tests".
-You can then run Espresso tests using the Android test runner.
+### Running the tests
+To run the test , open Android Studio's [Build Variants](https://sites.google.com/a/android.com/tools/tech-docs/unit-testing-support/qSxL68MPv5.png) pane and change the option `Test Artifact` to `Unit Tests`. You can then right click on `Unit1AssessmentTests` and run the tests.
