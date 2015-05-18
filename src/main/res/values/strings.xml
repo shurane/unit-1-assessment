@@ -1,4 +1,5 @@
 <resources>
+    <string name="title_activity_initial">InitialActivity</string>
+    <string name="title_activity_tile">TileActivity</string>
     <string name="action_settings">Settings</string>
-
 </resources>
