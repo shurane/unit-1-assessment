@@ -24,6 +24,8 @@ import static org.junit.Assert.assertTrue;
 @Config(manifest = "src/main/AndroidManifest.xml", emulateSdk = 18)
 public class Unit1AssessmentTests {
 
+    // ===================================== HELPERS START
+
     public static String getResourceId(View v){
         // http://stackoverflow.com/a/17583380/198348
         int id = v.getId();
@@ -40,10 +42,7 @@ public class Unit1AssessmentTests {
         return a.findViewById(a.getResources().getIdentifier(s, "id", a.getPackageName()));
     }
 
-    @Test
-    public void testSomething() throws Exception {
-        assertTrue(Robolectric.buildActivity(InitialActivity.class).create().get() != null);
-    }
+    // ===================================== HELPERS END
 
     @Test
     public void test01FixInitialActivityLayout() throws Exception {
@@ -96,15 +95,24 @@ public class Unit1AssessmentTests {
         assertEquals("BigTextActivity", ((Button) buttonBigTextActivity).getText());
 
         assertEquals("LinearLayout(@+id/counterLayout) should have layout_weight='2'", 2, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).weight, 0.01);
-        assertEquals("LinearLayout(@+id/buttonTileActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).weight, 0.01);
-        assertEquals("LinearLayout(@+id/buttonNewsReaderActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonNewsReaderActivity.getLayoutParams()).weight, 0.01);
-        assertEquals("LinearLayout(@+id/buttonBigTextActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).weight, 0.01);
-
+        assertEquals("Button      (@+id/buttonTileActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).weight, 0.01);
+        assertEquals("Button      (@+id/buttonNewsReaderActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonNewsReaderActivity.getLayoutParams()).weight, 0.01);
+        assertEquals("Button      (@+id/buttonBigTextActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).weight, 0.01);
         assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).weight, 0.01);
-        assertEquals("LinearLayout(@+id/tvCounter) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).weight, 0.01);
+        assertEquals("TextView    (@+id/tvCounter) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).weight, 0.01);
+        assertEquals("Button      (@+id/buttonPlus) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).weight, 0.01);
+        assertEquals("Button      (@+id/buttonMinus) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonMinus.getLayoutParams()).weight, 0.01);
 
-        assertEquals("LinearLayout(@+id/buttonPlus) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).weight, 0.01);
-        assertEquals("LinearLayout(@+id/buttonMinus) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonMinus.getLayoutParams()).weight, 0.01);
+
+        assertEquals("LinearLayout(@+id/counterLayout) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).height);
+        assertEquals("Button      (@+id/buttonTileActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).height);
+        assertEquals("Button      (@+id/buttonNewsReaderActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonNewsReaderActivity.getLayoutParams()).height);
+        assertEquals("Button      (@+ilayout_weightd/buttonBigTextActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).height);
+        assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).width);
+        assertEquals("TextView    (@+id/tvCounter) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).width);
+        assertEquals("Button      (@+id/buttonPlus) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).height);
+        assertEquals("Button      (@+id/buttonMinus) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonMinus.getLayoutParams()).height);
+
     }
 
     @Test
