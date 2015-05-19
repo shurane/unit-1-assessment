@@ -1,5 +1,6 @@
 package nyc.c4q;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import org.junit.runners.MethodSorters;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.res.builder.RobolectricPackageManager;
 import org.robolectric.util.ActivityController;
 
 import java.util.Random;
@@ -24,7 +26,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = "src/main/AndroidManifest.xml", emulateSdk = 18)
-public class Unit1AssessmentTests {
+public class Unit1AndroidAssessmentTests {
 
     @Test
     public void test01FixInitialActivityLayout() throws Exception {
@@ -165,6 +167,10 @@ public class Unit1AssessmentTests {
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
         buttonPlus.callOnClick();
         assertEquals(1, Integer.parseInt((String) tvCounter.getText()));
+        buttonPlus.callOnClick();
+        assertEquals(2, Integer.parseInt((String) tvCounter.getText()));
+        buttonMinus.callOnClick();
+        assertEquals(1, Integer.parseInt((String) tvCounter.getText()));
 
         controller.pause().stop().destroy();
         controller = Robolectric.buildActivity(InitialActivity.class).setup();
@@ -172,11 +178,16 @@ public class Unit1AssessmentTests {
         tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
         assertEquals(1, Integer.parseInt((String) tvCounter.getText()));
+
     }
 
     @Test
-    public void test06TestIntents() throws Exception {
+    public void test06TestIntentForTileActivity() throws Exception {
+        Intent bigTextActivity = new Intent();
+        bigTextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        bigTextActivity.setClassName("nyc.c4q","nyc.c4q.TileActivityLOL");
 
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
     }
 
     @Test
