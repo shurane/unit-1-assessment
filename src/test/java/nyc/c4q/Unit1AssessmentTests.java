@@ -31,7 +31,6 @@ public class Unit1AssessmentTests {
         InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
         LinearLayout layout = (LinearLayout) activity.findViewById(R.id.activity_initial);
 
-        // TODO only need the last assertTrue() method per view
         assertTrue("LinearLayout(@+id/activity_initial)[0] should be a LinearLayout", layout.getChildAt(0) instanceof LinearLayout);
         LinearLayout counterLayout = (LinearLayout) layout.getChildAt(0);
         assertTrue("LinearLayout(@+id/activity_initial)[0] should have R.id.counterLayout", Helpers.getResourceId(counterLayout).equals("counterLayout"));
