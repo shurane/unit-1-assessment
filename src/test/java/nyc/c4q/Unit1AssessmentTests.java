@@ -13,6 +13,7 @@ import org.junit.runners.MethodSorters;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.util.ActivityController;
 
 import java.util.Random;
 
@@ -154,6 +155,30 @@ public class Unit1AssessmentTests {
             }
             assertEquals(internalCount, Integer.parseInt((String) tvCounter.getText()));
         }
+    }
+
+    @Test
+    public void test05TvCounterStateShouldBeSavedThroughActivityLifeCycle(){
+        ActivityController<InitialActivity> controller = Robolectric.buildActivity(InitialActivity.class).setup();
+        InitialActivity activity = controller.get();
+        Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
+        Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
+        TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
+
+        assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
+        buttonPlus.callOnClick();
+        assertEquals(1, Integer.parseInt((String) tvCounter.getText()));
+
+        controller.pause().stop().destroy();
+        controller = Robolectric.buildActivity(InitialActivity.class).setup();
+        activity = controller.get();
+        tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertEquals(1, Integer.parseInt((String) tvCounter.getText()));
     }
 
     @Test
