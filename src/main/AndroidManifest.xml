@@ -17,10 +17,6 @@
             android:name=".TileActivity"
             android:label="@string/title_activity_tile" >
         </activity>
-        <activity
-            android:name=".BigTextActivity"
-            android:label="@string/title_activity_big_text" >
-        </activity>
     </application>
 
 </manifest>
