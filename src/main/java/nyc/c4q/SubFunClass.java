@@ -5,6 +5,5 @@ package nyc.c4q;
  */
 public class SubFunClass {
     public SubFunClass(){
-
     }
 }

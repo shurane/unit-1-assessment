@@ -4,15 +4,15 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.Collection;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(RobolectricTestRunner.class)
@@ -31,14 +31,20 @@ public class Unit1AssessmentTestsJava {
         assertThat(funObject, instanceOf(AwesomeInterface.class));
     }
 
-    @Test
+   @Test
     public void test03AbstractAwesomeClassImplementsAwesomeInterface() throws Exception{
-        AbstractAwesomeClass awesomeObject = new AbstractAwesomeClass(4){};
+        AbstractAwesomeClass awesomeObject = new ConcreteAwesomeClass();
         assertEquals(awesomeObject.getData(), 4);
-        assertEquals(awesomeObject.data, 4);
         awesomeObject.setData(5);
         assertEquals(awesomeObject.getData(), 5);
-        assertEquals(awesomeObject.data, 5);
+    }
+
+    @Test
+    public void test04AwesomeContainerContainsAwesomeObject() throws Exception{
+        Collection myList = AwesomeContainer.createAwesomeContainer();
+        assertEquals(myList.getClass(), List.class);
+        AwesomeContainer.addAwesomeObject(myList);
+        assertEquals(((List) myList).get(0).getClass(), AwesomeInterface.class);
     }
 
 }
