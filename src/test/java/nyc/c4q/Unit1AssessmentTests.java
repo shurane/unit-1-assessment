@@ -65,13 +65,13 @@ public class Unit1AssessmentTests {
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should be a Button", counterButtonsLayout.getChildAt(0) instanceof Button);
         Button buttonPlus = (Button) counterButtonsLayout.getChildAt(0);
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should have R.id.buttonPlus", getResourceId(buttonPlus).equals("buttonPlus"));
-        assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should be equal to LinearLayout(@+id/buttonPlus)", buttonPlus == findViewByIdString(activity, "buttonPlus"));
+        assertTrue("LinearLayout(@+id/counterButtonsLayout)[0] should be equal to Button(@+id/buttonPlus)", buttonPlus == findViewByIdString(activity, "buttonPlus"));
         assertEquals("+", buttonPlus.getText());
 
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should be a Button", counterButtonsLayout.getChildAt(1) instanceof Button);
         Button buttonMinus = (Button) counterButtonsLayout.getChildAt(1);
         assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should have R.id.buttonMinus", getResourceId(buttonMinus).equals("buttonMinus"));
-        assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should be equal to LinearLayout(@+id/buttonMinus)", buttonMinus == findViewByIdString(activity, "buttonMinus"));
+        assertTrue("LinearLayout(@+id/counterButtonsLayout)[1] should be equal to Button(@+id/buttonMinus)", buttonMinus == findViewByIdString(activity, "buttonMinus"));
         assertEquals("-", buttonMinus.getText());
 
         View tvCounter = counterLayout.getChildAt(1);
