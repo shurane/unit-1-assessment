@@ -233,26 +233,30 @@ public class Unit1AssessmentTestsAndroid {
         View greenView  = leftSide.getChildAt(1);
         assertTrue("LinearLayout(@+id/leftSide)[1] should have R.id.greenView", Helpers.getResourceId(greenView).equals("greenView"));
         assertTrue("LinearLayout(@+id/leftSide)[1] should be equal to View(@+id/greenView)", greenView == Helpers.findViewByIdString(ta, "greenView"));
+        Drawable greenViewBackground = greenView.getBackground();
+        assertThat(greenViewBackground, instanceOf(ColorDrawable.class));
+        assertEquals(0xff00ff00, ((ColorDrawable) greenViewBackground).getColor());
 
         View yellowView  = rightSide.getChildAt(0);
         assertTrue("LinearLayout(@+id/rightSide)[0] should have R.id.yellowView", Helpers.getResourceId(yellowView).equals("yellowView"));
         assertTrue("LinearLayout(@+id/rightSide)[0] should be equal to View(@+id/yellowView)", yellowView == Helpers.findViewByIdString(ta, "yellowView"));
+        Drawable yellowViewBackground = yellowView.getBackground();
+        assertThat(yellowViewBackground, instanceOf(ColorDrawable.class));
+        assertEquals(0xffffff00, ((ColorDrawable) yellowViewBackground).getColor());
 
         View whiteView  = rightSide.getChildAt(1);
         assertTrue("LinearLayout(@+id/rightSide)[1] should have R.id.whiteView", Helpers.getResourceId(whiteView).equals("whiteView"));
         assertTrue("LinearLayout(@+id/rightSide)[1] should be equal to View(@+id/whiteView)", whiteView == Helpers.findViewByIdString(ta, "whiteView"));
+        Drawable whiteViewBackground = whiteView.getBackground();
+        assertThat(whiteViewBackground, instanceOf(ColorDrawable.class));
+        assertEquals(0xffffffff, ((ColorDrawable) whiteViewBackground).getColor());
 
         View blueView  = rightSide.getChildAt(2);
         assertTrue("LinearLayout(@+id/rightSide)[2] should have R.id.blueView", Helpers.getResourceId(blueView).equals("blueView"));
         assertTrue("LinearLayout(@+id/rightSide)[2] should be equal to View(@+id/blueView)", blueView == Helpers.findViewByIdString(ta, "blueView"));
-
-
-//        View redView = leftSide.getChildAt(0);
-//        View greenView = leftSide.getChildAt(1);
-//
-//        View yellowView = rightSide.getChildAt(0);
-//        View whiteView = rightSide.getChildAt(1);
-//        View blueView = rightSide.getChildAt(2);
+        Drawable blueViewBackground = blueView.getBackground();
+        assertThat(blueViewBackground, instanceOf(ColorDrawable.class));
+        assertEquals(0xff0000ff, ((ColorDrawable) blueViewBackground).getColor());
 
         assertEquals("View(@+id/redView) should have layout_weight='40'", 40, ((LinearLayout.LayoutParams) redView.getLayoutParams()).weight, 0.01);
         assertEquals("View(@+id/greenView) should have layout_weight='60'", 60, ((LinearLayout.LayoutParams) greenView.getLayoutParams()).weight, 0.01);
