@@ -65,19 +65,13 @@ public class Unit1AssessmentTests {
                 buttonTileActivity instanceof Button && Helpers.getResourceId(buttonTileActivity).equals("buttonTileActivity"));
         assertEquals("TileActivity", ((Button) buttonTileActivity).getText());
 
-        View buttonNewsReaderActivity = layout.getChildAt(2);
-        assertTrue("LinearLayout(@+id/activity_initial)[1] should be equal to Button(@+id/buttonNewsReaderActivity)",
-                buttonNewsReaderActivity instanceof Button && Helpers.getResourceId(buttonNewsReaderActivity).equals("buttonNewsReaderActivity"));
-        assertEquals("NewsReaderActivity", ((Button) buttonNewsReaderActivity).getText());
-
-        View buttonBigTextActivity = layout.getChildAt(3);
-        assertTrue("LinearLayout(@+id/activity_initial)[1] should be equal to Button(@+id/buttonBigTextActivity)",
+        View buttonBigTextActivity = layout.getChildAt(2);
+        assertTrue("LinearLayout(@+id/activity_initial)[2] should be equal to Button(@+id/buttonBigTextActivity)",
                 buttonBigTextActivity instanceof Button && Helpers.getResourceId(buttonBigTextActivity).equals("buttonBigTextActivity"));
         assertEquals("BigTextActivity", ((Button) buttonBigTextActivity).getText());
 
         assertEquals("LinearLayout(@+id/counterLayout) should have layout_weight='2'", 2, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).weight, 0.01);
         assertEquals("Button      (@+id/buttonTileActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).weight, 0.01);
-        assertEquals("Button      (@+id/buttonNewsReaderActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonNewsReaderActivity.getLayoutParams()).weight, 0.01);
         assertEquals("Button      (@+id/buttonBigTextActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).weight, 0.01);
         assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).weight, 0.01);
         assertEquals("TextView    (@+id/tvCounter) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).weight, 0.01);
@@ -87,7 +81,6 @@ public class Unit1AssessmentTests {
 
         assertEquals("LinearLayout(@+id/counterLayout) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).height);
         assertEquals("Button      (@+id/buttonTileActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).height);
-        assertEquals("Button      (@+id/buttonNewsReaderActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonNewsReaderActivity.getLayoutParams()).height);
         assertEquals("Button      (@+i/buttonBigTextActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).height);
         assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).width);
         assertEquals("TextView    (@+id/tvCounter) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).width);
