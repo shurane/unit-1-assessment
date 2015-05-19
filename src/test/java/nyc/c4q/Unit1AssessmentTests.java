@@ -17,6 +17,7 @@ import org.robolectric.annotation.Config;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -101,6 +102,9 @@ public class Unit1AssessmentTests {
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
+        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
+
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
         for (int i=1; i<10; i++){
             buttonPlus.callOnClick();
@@ -113,6 +117,9 @@ public class Unit1AssessmentTests {
         InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
         for (int i=-1; i>-10; i--){
@@ -127,6 +134,11 @@ public class Unit1AssessmentTests {
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
+
         Random r = new Random(0);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
