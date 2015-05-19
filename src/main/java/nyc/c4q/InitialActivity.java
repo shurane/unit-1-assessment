@@ -13,16 +13,17 @@ public class InitialActivity extends Activity {
 
   public int counter = 0;
   public SharedPreferences preferences = null;
+  public final static String TAG = "C4QTAG";
 
   public void loadState(){
-    Log.d("C4Q", "loadState()");
+    Log.d(TAG, "loadState()");
     counter = preferences.getInt("counter", 0);
-    Log.d("C4Q", "loadState(): counter=="+counter);
+    Log.d(TAG, "loadState(): counter=="+counter);
   }
 
   public void saveState(){
-    Log.d("C4Q", "saveState()");
-    Log.d("C4Q", "saveState(): counter=="+counter);
+    Log.d(TAG, "saveState()");
+    Log.d(TAG, "saveState(): counter=="+counter);
     SharedPreferences.Editor editor = preferences.edit();
     editor.putInt("counter", counter);
     editor.commit();

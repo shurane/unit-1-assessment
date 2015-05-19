@@ -1,7 +1,6 @@
 package nyc.c4q;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,7 +13,7 @@ import org.junit.runners.MethodSorters;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.res.builder.RobolectricPackageManager;
+import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ActivityController;
 
 import java.util.Random;
@@ -67,14 +66,14 @@ public class Unit1AndroidAssessmentTests {
                 buttonTileActivity instanceof Button && Helpers.getResourceId(buttonTileActivity).equals("buttonTileActivity"));
         assertEquals("TileActivity", ((Button) buttonTileActivity).getText());
 
-        View buttonBigTextActivity = layout.getChildAt(2);
-        assertTrue("LinearLayout(@+id/activity_initial)[2] should be equal to Button(@+id/buttonBigTextActivity)",
-                buttonBigTextActivity instanceof Button && Helpers.getResourceId(buttonBigTextActivity).equals("buttonBigTextActivity"));
-        assertEquals("BigTextActivity", ((Button) buttonBigTextActivity).getText());
+        View buttonEmpty = layout.getChildAt(2);
+        assertTrue("LinearLayout(@+id/activity_initial)[2] should be equal to Button(@+id/buttonEmpty)",
+                buttonEmpty instanceof Button && Helpers.getResourceId(buttonEmpty).equals("buttonEmpty"));
+        assertEquals("Empty", ((Button) buttonEmpty).getText());
 
         assertEquals("LinearLayout(@+id/counterLayout) should have layout_weight='2'", 2, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).weight, 0.01);
         assertEquals("Button      (@+id/buttonTileActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).weight, 0.01);
-        assertEquals("Button      (@+id/buttonBigTextActivity) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).weight, 0.01);
+        assertEquals("Button      (@+id/buttonEmpty) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonEmpty.getLayoutParams()).weight, 0.01);
         assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).weight, 0.01);
         assertEquals("TextView    (@+id/tvCounter) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).weight, 0.01);
         assertEquals("Button      (@+id/buttonPlus) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).weight, 0.01);
@@ -83,7 +82,7 @@ public class Unit1AndroidAssessmentTests {
 
         assertEquals("LinearLayout(@+id/counterLayout) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) counterLayout.getLayoutParams()).height);
         assertEquals("Button      (@+id/buttonTileActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonTileActivity.getLayoutParams()).height);
-        assertEquals("Button      (@+i/buttonBigTextActivity) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonBigTextActivity.getLayoutParams()).height);
+        assertEquals("Button      (@+i/buttonEmpty) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonEmpty.getLayoutParams()).height);
         assertEquals("LinearLayout(@+id/counterButtonsLayout) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) counterButtonsLayout.getLayoutParams()).width);
         assertEquals("TextView    (@+id/tvCounter) should have layout_width='0dp'", 0, ((LinearLayout.LayoutParams) tvCounter.getLayoutParams()).width);
         assertEquals("Button      (@+id/buttonPlus) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).height);
@@ -182,12 +181,17 @@ public class Unit1AndroidAssessmentTests {
     }
 
     @Test
-    public void test06TestIntentForTileActivity() throws Exception {
-        Intent bigTextActivity = new Intent();
-        bigTextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        bigTextActivity.setClassName("nyc.c4q","nyc.c4q.TileActivityLOL");
-
+    public void test06ClickButtonToStartIntentForTileActivity() throws Exception {
         InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
+        Button buttonTileActivity = (Button) Helpers.findViewByIdString(activity, "buttonTileActivity");
+        assertNotNull("Button(@+id/buttonTileActivity) should not be null", buttonTileActivity);
+        buttonTileActivity.callOnClick();
+
+        ShadowApplication sa = Robolectric.shadowOf(activity.getApplication());
+        Intent nextStartedActivity = sa.getNextStartedActivity();
+
+        assertNotNull("Intent(nyc.c4q/nyc.c4q.TileActivity) is not queued up", nextStartedActivity);
+        assertEquals("nyc.c4q/nyc.c4q.TileActivity", nextStartedActivity.getComponent().flattenToString());
     }
 
     @Test
@@ -195,49 +199,65 @@ public class Unit1AndroidAssessmentTests {
         TileActivity ta = Robolectric.buildActivity(TileActivity.class).setup().get();
         LinearLayout taLayout = (LinearLayout) ta.findViewById(R.id.activity_tile);
 
-        assertTrue("LinearLayout(@+id/activity_tile) should have a vertical orientation",
-                taLayout.getOrientation() == LinearLayout.VERTICAL);
+        assertTrue("LinearLayout(@+id/activity_tile) should have a horizontal orientation",
+                taLayout.getOrientation() == LinearLayout.HORIZONTAL);
 
-        int leftSideId = ta.getResources().getIdentifier("leftSide", "id", ta.getPackageName());
-        int rightSideId = ta.getResources().getIdentifier("rightSide", "id", ta.getPackageName());
-        assertTrue("LinearLayout(@+id/leftSide) not found", leftSideId > 0);
-        assertTrue("LinearLayout(@+id/rightSide) not found", rightSideId > 0);
-        View leftSideById = ta.findViewById(leftSideId);
-        View rightSideById = ta.findViewById(rightSideId);
+        assertTrue("LinearLayout(@+id/activity_tile)[0] should be a LinearLayout", taLayout.getChildAt(0) instanceof LinearLayout);
+        LinearLayout leftSide = (LinearLayout) taLayout.getChildAt(0);
+        assertTrue("LinearLayout(@+id/activity_tile)[0] should have R.id.leftSide", Helpers.getResourceId(leftSide).equals("leftSide"));
+        assertTrue("LinearLayout(@+id/activity_tile)[0] should be equal to LinearLayout(@+id/leftSide)", leftSide == Helpers.findViewByIdString(ta, "leftSide"));
+        assertTrue("LinearLayout(@+id/activity_tile)[0] should have a vertical orientation",
+                leftSide.getOrientation() == LinearLayout.VERTICAL);
+        assertEquals("View(@+id/leftSide) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) leftSide.getLayoutParams()).weight, 0.01);
 
-        View leftSide = taLayout.getChildAt(0);
-        View rightSide = taLayout.getChildAt(1);
-        assertTrue("leftSide is not a LinearLayout", leftSide instanceof LinearLayout);
-        assertTrue("rightSide is not a LinearLayout", rightSide instanceof LinearLayout);
-
-        assertTrue("LinearLayout(@+id/activity_tile)[0] should be equal to LinearLayout(@+id/leftSide)",
-                leftSide == leftSideById);
-        assertTrue("LinearLayout(@+id/activity_tile)[1] should be equal to LinearLayout(@+id/rightSide)",
-                rightSide == rightSideById);
-
-        LinearLayout leftSideLayout = (LinearLayout) leftSide;
-        LinearLayout rightSideLayout = (LinearLayout) rightSide;
+        assertTrue("LinearLayout(@+id/activity_tile)[1] should be a LinearLayout", taLayout.getChildAt(1) instanceof LinearLayout);
+        LinearLayout rightSide = (LinearLayout) taLayout.getChildAt(1);
+        assertTrue("LinearLayout(@+id/activity_tile)[1] should have R.id.rightSide", Helpers.getResourceId(rightSide).equals("rightSide"));
+        assertTrue("LinearLayout(@+id/activity_tile)[1] should be equal to LinearLayout(@+id/rightSide)", rightSide == Helpers.findViewByIdString(ta, "rightSide"));
+        assertTrue("LinearLayout(@+id/activity_tile)[1] should have a vertical orientation",
+                rightSide.getOrientation() == LinearLayout.VERTICAL);
+        assertEquals("View(@+id/rightSide) should have layout_weight='1'", 1, ((LinearLayout.LayoutParams) rightSide.getLayoutParams()).weight, 0.01);
 
 
-        View red = leftSideLayout.getChildAt(0);
-        View green = leftSideLayout.getChildAt(1);
+        View redView  = leftSide.getChildAt(0);
+        assertTrue("LinearLayout(@+id/leftSide)[0] should have R.id.redView", Helpers.getResourceId(redView).equals("redView"));
+        assertTrue("LinearLayout(@+id/leftSide)[0] should be equal to View(@+id/redView)", redView == Helpers.findViewByIdString(ta, "redView"));
 
-        View yellow = rightSideLayout.getChildAt(0);
-        View white = rightSideLayout.getChildAt(1);
-        View blue = rightSideLayout.getChildAt(2);
+        View greenView  = leftSide.getChildAt(1);
+        assertTrue("LinearLayout(@+id/leftSide)[1] should have R.id.greenView", Helpers.getResourceId(greenView).equals("greenView"));
+        assertTrue("LinearLayout(@+id/leftSide)[1] should be equal to View(@+id/greenView)", greenView == Helpers.findViewByIdString(ta, "greenView"));
 
-        assertTrue("LinearLayout(@+id/leftSide).getOrientation() should be vertical",
-                leftSideLayout.getOrientation() == LinearLayout.VERTICAL);
-        assertTrue("LinearLayout(@+id/rightSide).getOrientation() should be vertical",
-                leftSideLayout.getOrientation() == LinearLayout.VERTICAL);
+        View yellowView  = rightSide.getChildAt(0);
+        assertTrue("LinearLayout(@+id/rightSide)[0] should have R.id.yellowView", Helpers.getResourceId(yellowView).equals("yellowView"));
+        assertTrue("LinearLayout(@+id/rightSide)[0] should be equal to View(@+id/yellowView)", yellowView == Helpers.findViewByIdString(ta, "yellowView"));
 
-        Log.d("Unit1Assessment", String.format("red:%d, green: %d, yellow: %d, white: %d, blue: %d",
-                ((LinearLayout.LayoutParams) red.getLayoutParams()).weight,
-                ((LinearLayout.LayoutParams) green.getLayoutParams()).weight,
-                ((LinearLayout.LayoutParams) yellow.getLayoutParams()).weight,
-                ((LinearLayout.LayoutParams) white.getLayoutParams()).weight,
-                ((LinearLayout.LayoutParams) blue.getLayoutParams()).weight));
-        // TODO test on dp, padding, padding around the views
+        View whiteView  = rightSide.getChildAt(1);
+        assertTrue("LinearLayout(@+id/rightSide)[1] should have R.id.whiteView", Helpers.getResourceId(whiteView).equals("whiteView"));
+        assertTrue("LinearLayout(@+id/rightSide)[1] should be equal to View(@+id/whiteView)", whiteView == Helpers.findViewByIdString(ta, "whiteView"));
+
+        View blueView  = rightSide.getChildAt(2);
+        assertTrue("LinearLayout(@+id/rightSide)[2] should have R.id.blueView", Helpers.getResourceId(blueView).equals("blueView"));
+        assertTrue("LinearLayout(@+id/rightSide)[2] should be equal to View(@+id/blueView)", blueView == Helpers.findViewByIdString(ta, "blueView"));
+
+
+//        View redView = leftSide.getChildAt(0);
+//        View greenView = leftSide.getChildAt(1);
+//
+//        View yellowView = rightSide.getChildAt(0);
+//        View whiteView = rightSide.getChildAt(1);
+//        View blueView = rightSide.getChildAt(2);
+
+        assertEquals("View(@+id/redView) should have layout_weight='40'", 40, ((LinearLayout.LayoutParams) redView.getLayoutParams()).weight, 0.01);
+        assertEquals("View(@+id/greenView) should have layout_weight='60'", 60, ((LinearLayout.LayoutParams) greenView.getLayoutParams()).weight, 0.01);
+        assertEquals("View(@+id/yellowView) should have layout_weight='33'", 33, ((LinearLayout.LayoutParams) yellowView.getLayoutParams()).weight, 0.01);
+        assertEquals("View(@+id/whiteView) should have layout_weight='44'", 44, ((LinearLayout.LayoutParams) whiteView.getLayoutParams()).weight, 0.01);
+        assertEquals("View(@+id/blueView) should have layout_weight='22'", 22, ((LinearLayout.LayoutParams) blueView.getLayoutParams()).weight, 0.01);
+
+        assertEquals("View(@+id/redView) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) redView.getLayoutParams()).height);
+        assertEquals("View(@+id/greenView) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) greenView.getLayoutParams()).height);
+        assertEquals("View(@+id/yellowView) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) yellowView.getLayoutParams()).height);
+        assertEquals("View(@+id/whiteView) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) whiteView.getLayoutParams()).height);
+        assertEquals("View(@+id/blueView) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) blueView.getLayoutParams()).height);
 
     }
 }
