@@ -1,6 +1,8 @@
 package nyc.c4q;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -18,8 +20,10 @@ import org.robolectric.util.ActivityController;
 
 import java.util.Random;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -222,6 +226,9 @@ public class Unit1AssessmentTestsAndroid {
         View redView  = leftSide.getChildAt(0);
         assertTrue("LinearLayout(@+id/leftSide)[0] should have R.id.redView", Helpers.getResourceId(redView).equals("redView"));
         assertTrue("LinearLayout(@+id/leftSide)[0] should be equal to View(@+id/redView)", redView == Helpers.findViewByIdString(ta, "redView"));
+        Drawable redViewBackground = redView.getBackground();
+        assertThat(redViewBackground, instanceOf(ColorDrawable.class));
+        assertEquals(0xffff0000, ((ColorDrawable) redViewBackground).getColor());
 
         View greenView  = leftSide.getChildAt(1);
         assertTrue("LinearLayout(@+id/leftSide)[1] should have R.id.greenView", Helpers.getResourceId(greenView).equals("greenView"));
