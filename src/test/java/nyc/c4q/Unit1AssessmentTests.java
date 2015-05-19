@@ -28,7 +28,7 @@ public class Unit1AssessmentTests {
 
     @Test
     public void test01FixInitialActivityLayout() throws Exception {
-        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
         LinearLayout layout = (LinearLayout) activity.findViewById(R.id.activity_initial);
 
         assertTrue("LinearLayout(@+id/activity_initial)[0] should be a LinearLayout", layout.getChildAt(0) instanceof LinearLayout);
@@ -91,7 +91,7 @@ public class Unit1AssessmentTests {
 
     @Test
     public void test02ButtonPlusShouldIncreaseTvCounter() throws Exception {
-        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
@@ -107,7 +107,7 @@ public class Unit1AssessmentTests {
 
     @Test
     public void test03ButtonMinusShouldDecreaseTvCounter() throws Exception {
-        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
@@ -123,7 +123,7 @@ public class Unit1AssessmentTests {
 
     @Test
     public void test04ButtonPlusAndButtonMinusShouldWork() throws Exception {
-        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).setup().get();
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
@@ -175,8 +175,13 @@ public class Unit1AssessmentTests {
     }
 
     @Test
+    public void test06TestIntents() throws Exception {
+
+    }
+
+    @Test
     public void test11FixTileActivityLayout() throws Exception {
-        TileActivity ta = Robolectric.buildActivity(TileActivity.class).create().get();
+        TileActivity ta = Robolectric.buildActivity(TileActivity.class).setup().get();
         LinearLayout taLayout = (LinearLayout) ta.findViewById(R.id.activity_tile);
 
         assertTrue("LinearLayout(@+id/activity_tile) should have a vertical orientation",
