@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = "src/main/AndroidManifest.xml", emulateSdk = 18)
-public class Unit1AndroidAssessmentTests {
+public class Unit1AssessmentTestsAndroid {
 
     @Test
     public void test01FixInitialActivityLayout() throws Exception {
