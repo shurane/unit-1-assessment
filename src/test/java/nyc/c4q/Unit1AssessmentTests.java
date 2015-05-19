@@ -132,7 +132,7 @@ public class Unit1AssessmentTests {
         assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
-        Random r = new Random(0);
+        Random r = new Random(3680);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
         int internalCount = 0;
@@ -151,6 +151,7 @@ public class Unit1AssessmentTests {
 
     @Test
     public void test05TvCounterStateShouldBeSavedThroughActivityLifeCycle(){
+        // use InitialActivity.saveState() and InitialActivity.loadState() methods
         ActivityController<InitialActivity> controller = Robolectric.buildActivity(InitialActivity.class).setup();
         InitialActivity activity = controller.get();
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
