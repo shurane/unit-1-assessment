@@ -195,7 +195,7 @@ public class Unit1AssessmentTestsAndroid {
     }
 
     @Test
-    public void test11FixTileActivityLayout() throws Exception {
+    public void test07FixTileActivityLayout() throws Exception {
         TileActivity ta = Robolectric.buildActivity(TileActivity.class).setup().get();
         LinearLayout taLayout = (LinearLayout) ta.findViewById(R.id.activity_tile);
 
