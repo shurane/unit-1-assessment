@@ -14,6 +14,8 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.Random;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -91,6 +93,55 @@ public class Unit1AssessmentTests {
         assertEquals("Button      (@+id/buttonPlus) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonPlus.getLayoutParams()).height);
         assertEquals("Button      (@+id/buttonMinus) should have layout_height='0dp'", 0, ((LinearLayout.LayoutParams) buttonMinus.getLayoutParams()).height);
 
+    }
+
+    @Test
+    public void test02ButtonPlusShouldIncreaseTvCounter() throws Exception {
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
+        TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
+        for (int i=1; i<10; i++){
+            buttonPlus.callOnClick();
+            assertEquals(i, Integer.parseInt((String) tvCounter.getText()));
+        }
+    }
+
+    @Test
+    public void test03ButtonMinusShouldDecreaseTvCounter() throws Exception {
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
+        TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+
+        assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
+        for (int i=-1; i>-10; i--){
+            buttonMinus.callOnClick();
+            assertEquals(i, Integer.parseInt((String) tvCounter.getText()));
+        }
+    }
+
+    @Test
+    public void test04ButtonPlusAndButtonMinusShouldWork() throws Exception {
+        InitialActivity activity = Robolectric.buildActivity(InitialActivity.class).create().get();
+        Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
+        Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
+        TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
+        Random r = new Random(0);
+
+        assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
+        int internalCount = 0;
+        for (int i=0; i<10000; i++){
+            if (r.nextBoolean()){
+                internalCount++;
+                buttonPlus.callOnClick();
+            }
+            else {
+                internalCount--;
+                buttonMinus.callOnClick();
+            }
+            assertEquals(internalCount, Integer.parseInt((String) tvCounter.getText()));
+        }
     }
 
     @Test

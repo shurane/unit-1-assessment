@@ -19,7 +19,7 @@ android {
         targetSdkVersion 18
         versionCode 2
         versionName "1.0.0-SNAPSHOT"
-        applicationId "com.example"
+        applicationId "nyc.c4q.Unit1Assessment"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
