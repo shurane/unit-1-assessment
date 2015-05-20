@@ -12,50 +12,52 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class InitialActivity extends Activity {
-  int numCounter = 0;
+    int numCounter = 0;
 
-  public int counter = 0;
-  public SharedPreferences preferences = null;
-  public final static String TAG = "C4QTAG";
+    public int counter = 0;
+    public SharedPreferences preferences = null;
+    public final static String TAG = "C4QTAG";
 
-  public void loadState(){
-    Log.d(TAG, "loadState()");
-    counter = preferences.getInt("counter", 0);
-    Log.d(TAG, "loadState(): counter=="+counter);
+    public void loadState() {
+        Log.d(TAG, "loadState()");
+        counter = preferences.getInt("counter", 0);
+        Log.d(TAG, "loadState(): counter==" + counter);
+    }
 
+    public void saveState() {
+        Log.d(TAG, "saveState()");
+        Log.d(TAG, "saveState(): counter==" + counter);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("counter", counter);
+        editor.commit();
+    }
 
-      Button plus = (Button) findViewById(R.id.buttonPlus);
-      plus.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-              numCounter++;
-              TextView counter = (TextView) findViewById(R.id.tvCounter);
-              counter.setText(Integer.toString(numCounter));
-          }
-      });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_initial);
+        preferences = getPreferences(Context.MODE_PRIVATE);
 
-      Button minus = (Button) findViewById(R.id.buttonMinus);
-      plus.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-              numCounter--;
-              TextView counter = (TextView) findViewById(R.id.tvCounter);
-              counter.setText(Integer.toString(numCounter));
-          }
-      });
-  }
+        Log.d(TAG, "onCreate()");
+        Button plus = (Button) findViewById(R.id.buttonPlus);
+        plus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                numCounter++;
+                Log.d(TAG, "plus.onClick(): counter==" + numCounter);
+                TextView counter = (TextView) findViewById(R.id.tvCounter);
+                counter.setText(Integer.toString(numCounter));
+            }
+        });
 
-  public void saveState(){
-    Log.d(TAG, "saveState()");
-    Log.d(TAG, "saveState(): counter=="+counter);
-    SharedPreferences.Editor editor = preferences.edit();
-    editor.putInt("counter", counter);
-    editor.commit();
-  }
-
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_initial);
-    preferences = getPreferences(Context.MODE_PRIVATE);
-  }
+        Button minus = (Button) findViewById(R.id.buttonMinus);
+        minus.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                numCounter--;
+                Log.d(TAG, "minus.onClick(): counter==" + numCounter);
+                TextView counter = (TextView) findViewById(R.id.tvCounter);
+                counter.setText(Integer.toString(numCounter));
+            }
+        });
+    }
 
 }

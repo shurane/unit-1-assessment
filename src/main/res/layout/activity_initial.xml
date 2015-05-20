@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context="nyc.c4q.InitialActivity"
     android:id="@+id/activity_initial"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/counterLayout"
         android:orientation="horizontal"
@@ -18,13 +18,13 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/counterButtonsLayout"
             android:orientation="vertical"
             android:layout_weight="1">
 
             <Button
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/buttonPlus"
                 android:text="+"
@@ -32,7 +32,7 @@
                 />
 
             <Button
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/buttonMinus"
                 android:text="-"
@@ -47,6 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="0"
+            android:textSize="60sp"
             android:layout_weight="1"
             />
 
@@ -66,15 +67,5 @@
         android:id="@+id/buttonEmpty"
         android:text="Empty"
         android:layout_weight="1"/>
-
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="InitialActivity"
-        />
-
-
 
 </LinearLayout>
