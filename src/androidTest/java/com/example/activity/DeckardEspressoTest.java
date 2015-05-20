@@ -1,7 +1,7 @@
-package com.c4q.activity;
+package com.example.activity;
 
 import nyc.c4q.R;
-import nyc.c4q.c4q.Unit1AssessmentActivity;
+import nyc.c4q.;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;

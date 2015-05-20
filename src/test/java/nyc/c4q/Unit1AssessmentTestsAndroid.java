@@ -100,7 +100,7 @@ public class Unit1AssessmentTestsAndroid {
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
-        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("Button(@+id/buttonPlus) should not be null", buttonPlus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));

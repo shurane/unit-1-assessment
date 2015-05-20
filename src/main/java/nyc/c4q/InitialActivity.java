@@ -14,11 +14,14 @@ public class InitialActivity extends Activity {
   public int counter = 0;
   public SharedPreferences preferences = null;
   public final static String TAG = "C4QTAG";
+  Button buttonPlus;
+  TextView tvCounter;
+  Button buttonMinus;
 
   public void loadState(){
     Log.d(TAG, "loadState()");
     counter = preferences.getInt("counter", 0);
-    Log.d(TAG, "loadState(): counter=="+counter);
+    Log.d(TAG, "loadState(): counter==" + counter);
   }
 
   public void saveState(){
@@ -30,9 +33,44 @@ public class InitialActivity extends Activity {
   }
 
   @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    outState.putInt("tvcounter", Integer.parseInt(tvCounter.getText().toString()));
+    super.onSaveInstanceState(outState);
+  }
+
+  @Override
+  protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    super.onRestoreInstanceState(savedInstanceState);
+      tvCounter.setText(savedInstanceState.getInt("tvcounter")+"");
+  }
+
+  @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_initial);
     preferences = getPreferences(Context.MODE_PRIVATE);
+    buttonPlus = (Button) findViewById(R.id.buttonPlus);
+    tvCounter =  (TextView) findViewById(R.id.tvCounter);
+
+    buttonPlus.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        int oldnum = Integer.parseInt(tvCounter.getText().toString());
+        int newnum = oldnum +1;
+        tvCounter.setText(""+newnum);
+
+      }
+    });
+    buttonMinus = (Button) findViewById(R.id.buttonMinus);
+    buttonMinus.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        int oldnum = Integer.parseInt(tvCounter.getText().toString());
+        int newnum = oldnum -1;
+        tvCounter.setText(""+newnum);
+
+      }
+    });
+
   }
 }
