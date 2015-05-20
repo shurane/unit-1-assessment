@@ -100,7 +100,7 @@ public class Unit1AssessmentTestsAndroid {
         Button buttonPlus = (Button) Helpers.findViewByIdString(activity, "buttonPlus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
-        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("Button(@+id/buttonPlus) should not be null", buttonPlus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
@@ -116,7 +116,7 @@ public class Unit1AssessmentTestsAndroid {
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
-        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("Button(@+id/buttonMinus) should not be null", buttonMinus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
@@ -133,8 +133,8 @@ public class Unit1AssessmentTestsAndroid {
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
-        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
-        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("Button(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("Button(@+id/buttonMinus) should not be null", buttonMinus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         Random r = new Random(3680);
@@ -163,8 +163,8 @@ public class Unit1AssessmentTestsAndroid {
         Button buttonMinus = (Button) Helpers.findViewByIdString(activity, "buttonMinus");
         TextView tvCounter = (TextView) Helpers.findViewByIdString(activity, "tvCounter");
 
-        assertNotNull("TextView(@+id/buttonPlus) should not be null", buttonPlus);
-        assertNotNull("TextView(@+id/buttonMinus) should not be null", buttonMinus);
+        assertNotNull("Button(@+id/buttonPlus) should not be null", buttonPlus);
+        assertNotNull("Button(@+id/buttonMinus) should not be null", buttonMinus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
