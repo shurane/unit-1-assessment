@@ -8,16 +8,10 @@ import android.widget.Button;
 
 public class TileActivity extends Activity {
 
-    Button buttonPlus;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tile);
-
-        Button buttonPlus = (Button) findViewById(R.id.buttonPlus);
-        Button buttonMinus = (Button) findViewById(R.id.buttonMinus);
 
     }
 
