@@ -46,9 +46,23 @@ public class InitialActivity extends Activity {
       @Override
       public void onClick(View v) {
         counter++;
-        tvCounter.setText(counter);
+        String number = String.valueOf(counter);
+        tvCounter.setText(number);
+
       }
     });
+
+    buttonMinus = (Button)findViewById(R.id.buttonMinus);
+    buttonMinus.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        counter--;
+        String number = String.valueOf(counter);
+        tvCounter.setText(number);
+      }
+    });
+
+    
 
 
 
