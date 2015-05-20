@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/activity_initial"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nyc.c4q.InitialActivity"
-    android:id="@+id/activity_initial">
+    android:orientation="horizontal"
+    tools:context="nyc.c4q.InitialActivity"> <!-- tried to changed it to counterLayout but gave me an error-->
+
+    <LinearLayout
+        android:id="@+id/counterLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/counterButtonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/buttonPlus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="-" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="InitialActivity"
-        />
+        android:id="@+id/tvCounter"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_weight="1"
+        android:text="0" />
+
+    <Button
+        android:id="@+id/buttonEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Empty"
+        android:layout_gravity="bottom" />
+
+    <Button
+        android:id="@+id/buttonTileActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TileActivity"
+        android:layout_gravity="center_vertical" />
+
+
 </LinearLayout>
