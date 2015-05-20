@@ -28,7 +28,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
-                android:text="+" />
+                android:text="+"
+                android:textSize="80sp"/>
 
             <Button
                 android:id="@+id/buttonMinus"
@@ -36,7 +37,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:onClick="onClick"
-                android:text="-" />
+                android:text="-"
+                android:textSize="80sp"/>
 
         </LinearLayout>
 
@@ -47,7 +49,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0"
-            android:textColor="#ffff"/>
+            android:textColor="#ffff"
+            android:textSize="80sp"/>
 
     </LinearLayout>
 
@@ -56,19 +59,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="TileActivity" />
+        android:text="TileActivity"
+        android:textSize="30sp"/>
 
     <Button
         android:id="@+id/buttonEmpty"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="Empty" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="InitialActivity" />
+        android:text="Empty"
+        android:textSize="30sp"/>
 
 </LinearLayout>

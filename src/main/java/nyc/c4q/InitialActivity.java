@@ -2,6 +2,7 @@ package nyc.c4q;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class InitialActivity extends Activity {
 
         Button buttonPlus = (Button) findViewById(R.id.buttonPlus);
         Button buttonMinus = (Button) findViewById(R.id.buttonMinus);
+        Button buttonTileActivity = (Button) findViewById(R.id.buttonTileActivity);
 
         buttonPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +58,13 @@ public class InitialActivity extends Activity {
             }
         });
 
+        buttonTileActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InitialActivity.this, TileActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
