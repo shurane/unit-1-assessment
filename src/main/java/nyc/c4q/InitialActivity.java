@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class InitialActivity extends Activity {
+  int numCounter = 0;
 
   public int counter = 0;
   public SharedPreferences preferences = null;
@@ -19,6 +22,25 @@ public class InitialActivity extends Activity {
     Log.d(TAG, "loadState()");
     counter = preferences.getInt("counter", 0);
     Log.d(TAG, "loadState(): counter=="+counter);
+
+
+      Button plus = (Button) findViewById(R.id.buttonPlus);
+      plus.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+              numCounter++;
+              TextView counter = (TextView) findViewById(R.id.tvCounter);
+              counter.setText(Integer.toString(numCounter));
+          }
+      });
+
+      Button minus = (Button) findViewById(R.id.buttonMinus);
+      plus.setOnClickListener(new View.OnClickListener() {
+          public void onClick(View v) {
+              numCounter--;
+              TextView counter = (TextView) findViewById(R.id.tvCounter);
+              counter.setText(Integer.toString(numCounter));
+          }
+      });
   }
 
   public void saveState(){
@@ -35,4 +57,5 @@ public class InitialActivity extends Activity {
     setContentView(R.layout.activity_initial);
     preferences = getPreferences(Context.MODE_PRIVATE);
   }
+
 }
