@@ -56,11 +56,12 @@ public class InitialActivity extends Activity {
               tvCounter.setText(String.valueOf(counter));
           }
     });
-    final Button tileActivity = (Button) findViewById(R.id.buttonTileActivity);
+    Button tileActivity = (Button) findViewById(R.id.buttonTileActivity);
         tileActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent tileActivity;
+                Intent ta = new Intent(getBaseContext(), TileActivity.class);
+                startActivity(ta);
             }
         });
   }

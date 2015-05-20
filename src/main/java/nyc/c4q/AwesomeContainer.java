@@ -15,4 +15,6 @@ public class AwesomeContainer {
     public static void addAwesomeObject(Collection awesomeContainer){
         return;
     }
+
+    Collection myList = AwesomeContainer.createAwesomeContainer();
 }
