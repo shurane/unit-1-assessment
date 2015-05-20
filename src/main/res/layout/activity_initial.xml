@@ -1,18 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nyc.c4q.InitialActivity"
     android:id="@+id/activity_initial">
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/tvCounter"
+        android:text="0"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/buttonTileActivity"
+        android:text="TileActivity"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="InitialActivity"
-        />
+        android:layout_height="0dp" />
+
+    <Button
+        android:id="@+id/buttonEmpty"
+        android:text="Empty"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+
+<LinearLayout
+    android:id="@+id/counterLayout"
+    android:orientation="horizontal"
+    android:layout_weight="2"
+    android:layout_width="wrap_content"
+    android:layout_height="0dp">
+
+ <LinearLayout
+     android:id="@+id/counterButtonsLayout"
+     android:orientation="vertical"
+     android:layout_weight="1"
+     android:layout_width="0dp"
+     android:layout_height="match_parent">
+
+ <Button
+     android:id="@+id/buttonPlus"
+     android:text="+"
+     android:layout_weight="1"
+     android:onClick=""
+     android:layout_width="wrap_content"
+     android:layout_height="0dp" />
+
+ <Button
+     android:id="@+id/buttonMinus"
+     android:text="-"
+     android:layout_weight="1"
+     android:onClick=""
+     android:layout_width="wrap_content"
+     android:layout_height="0dp" />
+
+ </LinearLayout>
+
+</LinearLayout>
+
 </LinearLayout>
