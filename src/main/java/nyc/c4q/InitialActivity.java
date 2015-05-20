@@ -22,14 +22,22 @@ public class InitialActivity extends Activity {
         Log.d(TAG, "loadState()");
         counter = preferences.getInt("counter", 0);
         Log.d(TAG, "loadState(): counter==" + counter);
+        SharedPreferences sharedPref= getSharedPreferences("mypref", 0);
+        Integer counter = sharedPref.getInt("counter", numCounter);
     }
 
     public void saveState() {
         Log.d(TAG, "saveState()");
         Log.d(TAG, "saveState(): counter==" + counter);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("counter", counter);
+        //SharedPreferences.Editor editor = preferences.edit();
+        //editor.putInt("counter", counter);
+        //editor.commit();
+        SharedPreferences sharedPref= getSharedPreferences("mypref", 0);
+        SharedPreferences.Editor editor= sharedPref.edit();
+        editor.putInt("counter", numCounter);
         editor.commit();
+
+
     }
 
     @Override
@@ -37,6 +45,11 @@ public class InitialActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
         preferences = getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences sharedPref= getSharedPreferences("mypref", 0);
+        Integer counter = sharedPref.getInt("counter", numCounter);
+        numCounter = counter;
+
 
         Log.d(TAG, "onCreate()");
         Button plus = (Button) findViewById(R.id.buttonPlus);
