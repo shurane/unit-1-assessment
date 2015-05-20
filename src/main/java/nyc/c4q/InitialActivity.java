@@ -42,7 +42,6 @@ public class InitialActivity extends Activity {
         public void onClick(View view) {
             counter++;
             tvCounter.setText("" + counter);
-            saveState();
         }
     });
     Button buttonMinus = (Button) findViewById(R.id.buttonMinus);
@@ -62,4 +61,18 @@ public class InitialActivity extends Activity {
         }
     });
   }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        this.saveState();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        this.loadState();
+    }
 }
+
+
