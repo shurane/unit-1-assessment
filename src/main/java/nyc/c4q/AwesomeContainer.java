@@ -9,7 +9,7 @@ import java.util.List;
  * Created by amyquispe on 5/19/15.
  */
 public class AwesomeContainer {
-    static List arr;
+    static ArrayList arr;
     public static Collection createAwesomeContainer(){
          arr = new ArrayList();
         return arr;
