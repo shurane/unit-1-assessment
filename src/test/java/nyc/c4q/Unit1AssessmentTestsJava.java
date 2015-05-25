@@ -42,9 +42,9 @@ public class Unit1AssessmentTestsJava {
     @Test
     public void test04AwesomeContainerContainsAwesomeObject() throws Exception{
         Collection myList = AwesomeContainer.createAwesomeContainer();
-        assertEquals(myList.getClass(), List.class);
+        assertEquals(myList.getClass(), ArrayList.class);
         AwesomeContainer.addAwesomeObject(myList);
-        assertEquals(((List) myList).get(0).getClass(), AwesomeInterface.class);
+        assertEquals(((ArrayList) myList).get(0).getClass(), ConcreteAwesomeClass.class);
     }
 
 }
