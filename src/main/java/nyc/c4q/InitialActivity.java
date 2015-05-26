@@ -37,28 +37,14 @@ public class InitialActivity extends Activity {
     editor.commit();
   }
 
-  @Override
-  protected void onSaveInstanceState(Bundle outState) {
-    super.onSaveInstanceState(outState);
-    int save = Integer.parseInt(tvCounter.getText().toString());
-    outState.putInt("tvcount", save);
 
-  }
-
-  @Override
-  protected void onRestoreInstanceState(Bundle savedInstanceState) {
-    super.onRestoreInstanceState(savedInstanceState);
-    int load = savedInstanceState.getInt("tvcount");
-    tvCounter.setText(load+"");
-
-  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_initial);
     preferences = getPreferences(Context.MODE_PRIVATE);
-
+    
     tvCounter =  (TextView) findViewById(R.id.tvCounter);
 
     buttonTileActivity = (Button) findViewById(R.id.buttonTileActivity);
@@ -74,10 +60,8 @@ public class InitialActivity extends Activity {
     buttonPlus.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        int oldnum = Integer.parseInt(tvCounter.getText().toString());
-        int newnum = oldnum +1;
         counter = counter +1;
-        tvCounter.setText(""+newnum);
+        tvCounter.setText(""+counter);
         saveState();
       }
     });
@@ -86,10 +70,8 @@ public class InitialActivity extends Activity {
     buttonMinus.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        int oldnum = Integer.parseInt(tvCounter.getText().toString());
-        int newnum = oldnum -1;
         counter = counter -1;
-        tvCounter.setText(""+newnum);
+        tvCounter.setText(""+counter);
         saveState();
       }
     });
