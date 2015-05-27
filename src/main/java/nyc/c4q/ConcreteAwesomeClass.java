@@ -18,4 +18,6 @@ public class ConcreteAwesomeClass extends AbstractAwesomeClass  {
     public void setData(int someData) {
 
     }
+
+
 }

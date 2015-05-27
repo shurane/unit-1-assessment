@@ -31,12 +31,28 @@ public class InitialActivity extends Activity {
   }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loadState();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadState();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveState();
+    }
+
+    @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_initial);
     preferences = getPreferences(Context.MODE_PRIVATE);
-
-
 
     Button plus = (Button) findViewById(R.id.buttonPlus);
       plus.setOnClickListener(new View.OnClickListener() {
@@ -65,4 +81,5 @@ public class InitialActivity extends Activity {
             }
         });
   }
+
 }
