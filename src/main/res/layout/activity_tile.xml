@@ -3,13 +3,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="nyc.c4q.TileActivity"
     android:id="@+id/activity_tile"
     >
 
-    <TextView
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/leftSide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <View
+            android:id="@+id/redView"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="40"
+            android:background="#ffff0000" />
+
+        <View
+            android:id="@+id/greenView"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="60"
+            android:background="#ff00ff00"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightSide"
         android:layout_width="match_parent"
-        android:text="TileActivity"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <View
+            android:id="@+id/yellowView"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="33"
+            android:background="#ffffff00"/>
+        <View
+            android:id="@+id/whiteView"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="44"
+            android:background="#ffffffff"/>
+        <View
+            android:id="@+id/blueView"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="22"
+            android:background="#ff0000ff"/>
+
+    </LinearLayout>
 
 </LinearLayout>
