@@ -9,14 +9,18 @@ import java.util.List;
  * Created by amyquispe on 5/19/15.
  */
 public class AwesomeContainer {
-    static ArrayList arr;
+
+    public static ArrayList cray;
+
+
     public static Collection createAwesomeContainer(){
-         arr = new ArrayList();
-        return arr;
+        cray=new ArrayList();
+        return cray;
     }
 
     public static void addAwesomeObject(Collection awesomeContainer){
-        arr.add(awesomeContainer);
+        ConcreteAwesomeClass con = new ConcreteAwesomeClass();
+        awesomeContainer.add(con);
         return;
     }
 }

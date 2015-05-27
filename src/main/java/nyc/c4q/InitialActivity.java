@@ -12,69 +12,71 @@ import android.widget.TextView;
 
 public class InitialActivity extends Activity {
 
-  public int counter = 0;
-  public SharedPreferences preferences = null;
-  public final static String TAG = "C4QTAG";
-  Button buttonPlus;
-  TextView tvCounter;
-  Button buttonMinus;
-  Button buttonTileActivity;
 
-  public void loadState(){
-    Log.d(TAG, "loadState()");
+    public final static String TAG = "C4QTAG";
+    public SharedPreferences preferences = null;
 
-    counter = preferences.getInt("counter",0);
+    public int counter = 0;
+    Button buttonPlus;
+    Button buttonMinus;
+    Button buttonTileActivity;
 
-    Log.d(TAG, "loadState(): counter==" + counter);
-  }
+    TextView tvCounter;
 
-  public void saveState(){
-    Log.d(TAG, "saveState()");
-    Log.d(TAG, "saveState(): counter=="+counter);
+    public void loadState(){
+        Log.d(TAG, "loadState()");
+        counter = preferences.getInt("counter", 0);
+        Log.d(TAG, "loadState(): counter=="+counter);
+    }
 
-    SharedPreferences.Editor editor = preferences.edit();
-    editor.putInt("counter", counter);
-    editor.commit();
-  }
+    public void saveState(){
+        Log.d(TAG, "saveState()");
+        Log.d(TAG, "saveState(): counter=="+counter);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("counter", counter);
+        editor.commit();
+    }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_initial);
+        preferences = getPreferences(Context.MODE_PRIVATE);
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_initial);
-    preferences = getPreferences(Context.MODE_PRIVATE);
-    
-    tvCounter =  (TextView) findViewById(R.id.tvCounter);
+        loadState();
+        tvCounter = (TextView) findViewById(R.id.tvCounter);
+        tvCounter.setText(Integer.toString(counter));
 
-    buttonTileActivity = (Button) findViewById(R.id.buttonTileActivity);
-    buttonTileActivity.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent intent=new Intent(v.getContext(),TileActivity.class);
-        startActivity(intent);
-      }
-    });
+        buttonPlus = (Button) findViewById(R.id.buttonPlus);
+        buttonPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter = counter + 1;
+                tvCounter.setText(Integer.toString(counter));
+                saveState();
+            }
+        });
 
-    buttonPlus = (Button) findViewById(R.id.buttonPlus);
-    buttonPlus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        counter = counter +1;
-        tvCounter.setText(""+counter);
-        saveState();
-      }
-    });
+        buttonMinus = (Button) findViewById(R.id.buttonMinus);
+        buttonMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter = counter - 1;
+                tvCounter.setText(Integer.toString(counter));
+                saveState();
+            }
+        });
 
-    buttonMinus = (Button) findViewById(R.id.buttonMinus);
-    buttonMinus.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        counter = counter -1;
-        tvCounter.setText(""+counter);
-        saveState();
-      }
-    });
 
-  }
+        buttonTileActivity = (Button) findViewById(R.id.buttonTileActivity);
+        buttonTileActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), TileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
 }
