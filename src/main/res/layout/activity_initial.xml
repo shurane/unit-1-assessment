@@ -9,10 +9,62 @@
     tools:context="nyc.c4q.InitialActivity"
     android:id="@+id/activity_initial">
 
-    <TextView
-        android:id="@+id/text"
+    <LinearLayout
+        android:id="@+id/counterLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="InitialActivity"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/counterButtonsLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonPlus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="50sp"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="50sp"
+                android:text="-" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCounter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="60sp"
+            android:text="0" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonTileActivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:text="TileActivity" />
+
+    <Button
+        android:id="@+id/buttonEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:text="Empty" />
+
 </LinearLayout>
