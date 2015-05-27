@@ -17,9 +17,17 @@ public class InitialActivity extends Activity {
     public final static String TAG = "C4QTAG";
 
     public void loadState() {
-        Log.d(TAG, "loadState()");
-        counter = preferences.getInt("counter", 0);
-        Log.d(TAG, "loadState(): counter==" + counter);
+
+        if (preferences != null) {
+            Log.d(TAG, "loadState()");
+            counter = preferences.getInt("counter", counter);
+            Log.d(TAG, "loadState(): counter==" + counter);
+        }
+        else {
+            Log.d(TAG, "loadState()");
+            counter = preferences.getInt("counter", 0);
+            Log.d(TAG, "loadState(): counter==" + counter);
+        }
     }
 
     public void saveState() {

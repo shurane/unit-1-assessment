@@ -4,11 +4,11 @@ package nyc.c4q;
  * Created by amyquispe on 5/19/15.
  */
 public abstract class AbstractAwesomeClass implements AwesomeInterface {
-    private int data;
+    private int data = 4;
 
     @Override
     public int getData() {
-        return data;
+        return this.data;
     }
 
     @Override
