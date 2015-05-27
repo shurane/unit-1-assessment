@@ -110,6 +110,8 @@ public class Unit1AssessmentTestsAndroid {
         assertNotNull("Button(@+id/buttonPlus) should not be null", buttonPlus);
         assertNotNull("TextView(@+id/tvCounter) should not be null", tvCounter);
 
+        buttonPlus.setOnClickListener((View.OnClickListener)tvCounter);
+
         assertEquals(0, Integer.parseInt((String) tvCounter.getText()));
         for (int i = 1; i < 10; i++) {
             buttonPlus.callOnClick();

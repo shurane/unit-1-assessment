@@ -1,15 +1,64 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nyc.c4q.TileActivity"
     android:id="@+id/activity_tile"
     >
 
-    <TextView
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/leftSide"
+        android:orientation="vertical"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:text="TileActivity"/>
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/redView"
+        android:layout_weight="40"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ffff0000" />
+
+    <TextView
+        android:id="@+id/greenView"
+        android:layout_weight="60"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ff00ff00" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightSide"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/yellowView"
+        android:layout_weight="33"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ffffff00" />
+
+    <TextView
+        android:id="@+id/whiteView"
+        android:layout_weight="44"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/blueView"
+        android:layout_weight="22"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ff0000ff" />
+
+    </LinearLayout>
 
 </LinearLayout>
