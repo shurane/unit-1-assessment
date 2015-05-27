@@ -17,17 +17,9 @@ public class InitialActivity extends Activity {
     public final static String TAG = "C4QTAG";
 
     public void loadState() {
-
-        if (preferences != null) {
-            Log.d(TAG, "loadState()");
-            counter = preferences.getInt("counter", counter);
-            Log.d(TAG, "loadState(): counter==" + counter);
-        }
-        else {
-            Log.d(TAG, "loadState()");
-            counter = preferences.getInt("counter", 0);
-            Log.d(TAG, "loadState(): counter==" + counter);
-        }
+        Log.d(TAG, "loadState()");
+        counter = preferences.getInt("counter", 0);
+        Log.d(TAG, "loadState(): counter=="+counter);
     }
 
     public void saveState() {
@@ -40,6 +32,8 @@ public class InitialActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // want to check bundle if counter is null? if not, restore.
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial);
         preferences = getPreferences(Context.MODE_PRIVATE);
@@ -73,8 +67,14 @@ public class InitialActivity extends Activity {
                 startActivity(intent);
             }
         });
-
     }
 
+    // Wasn't able to finish this part.
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+        Bundle b = new Bundle();
+        b.putString("counter", String.valueOf(counter));
+    }
 }
