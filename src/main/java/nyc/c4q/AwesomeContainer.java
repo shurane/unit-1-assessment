@@ -14,5 +14,7 @@ public class AwesomeContainer {
 
     public static void addAwesomeObject(Collection awesomeContainer){
 
+        ConcreteAwesomeClass concreteAweClass = new ConcreteAwesomeClass();
+       awesomeContainer.add(concreteAweClass);
     }
 }
