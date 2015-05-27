@@ -7,7 +7,7 @@ public abstract class AbstractAwesomeClass implements AwesomeInterface {
 
     @Override
     public int getData() {
-        return 0;
+        return 5;
     }
 
     @Override
