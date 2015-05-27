@@ -7,6 +7,7 @@ import org.junit.runners.MethodSorters;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -42,8 +43,13 @@ public class Unit1AssessmentTestsJava {
     @Test
     public void test04AwesomeContainerContainsAwesomeObject() throws Exception{
         Collection myList = AwesomeContainer.createAwesomeContainer();
+
+
         assertEquals(myList.getClass(), ArrayList.class);
+
+
         AwesomeContainer.addAwesomeObject(myList);
+
         assertEquals(((ArrayList) myList).get(0).getClass(), ConcreteAwesomeClass.class);
     }
 

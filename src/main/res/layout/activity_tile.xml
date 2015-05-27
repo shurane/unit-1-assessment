@@ -5,7 +5,63 @@
     android:layout_height="match_parent"
     tools:context="nyc.c4q.TileActivity"
     android:id="@+id/activity_tile"
+    android:orientation="horizontal"
     >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/leftSide"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/redView"
+            android:layout_weight="40"
+            android:background="#ff0000">
+
+        </View>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/greenView"
+            android:layout_weight="60"
+            android:background="#00ff00">
+
+        </View>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rightSide"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/yellowView"
+            android:layout_weight="33"
+            android:background="#ffff00">
+
+        </View>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/whiteView"
+            android:layout_weight="44"
+            android:background="#ffffff">
+
+        </View>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/blueView"
+            android:layout_weight="22"
+            android:background="#0000ff">
+
+        </View>
+    </LinearLayout>
 
     <TextView
         android:layout_height="match_parent"
