@@ -9,8 +9,9 @@ public abstract class AbstractAwesomeClass implements AwesomeInterface {
 
     @Override
     public int getData() {
+        int getData=this.someData;
+        return getData;
 
-        return 4;//has to return 4 or 5;
     }
 
     @Override
@@ -27,8 +28,4 @@ public static void main (){
 
 
 }
-
-
-
-
 }
