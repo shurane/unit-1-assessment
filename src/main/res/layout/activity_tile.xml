@@ -5,11 +5,57 @@
     android:layout_height="match_parent"
     tools:context="nyc.c4q.TileActivity"
     android:id="@+id/activity_tile"
-    >
-
-    <TextView
-        android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <!-- activity_tile [0] -->
+    <LinearLayout
+        android:id="@+id/leftSide"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:text="TileActivity"/>
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- leftSide [0] -->
+        <View
+            android:id="@+id/redView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="40"
+            android:background="#ffff0000"/>
+        <!-- leftSide [1] -->
+        <View
+            android:id="@+id/greenView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:background="#ff00ff00"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rightSide"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <!-- rightSide [0] -->
+        <View
+            android:id="@+id/yellowView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="33"
+            android:background="#ffffff00"/>
+        <!-- rightSide [1] -->
+        <View
+            android:id="@+id/whiteView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="44"
+            android:background="#ffffffff"/>
+        <!-- rightSide [2] -->
+        <View
+            android:id="@+id/blueView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="22"
+            android:background="#ff0000ff"/>
+    </LinearLayout>
+
 
 </LinearLayout>
