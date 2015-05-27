@@ -7,10 +7,6 @@
     android:id="@+id/activity_tile"
     android:orientation="horizontal"
     >
-    <TextView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text="TileActivity"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,14 +22,15 @@
         android:layout_weight="40">
         </View>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:id="@+id/greenView"
-            android:background="#ff00ff00"
-            android:layout_weight="60">
+     <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/greenView"
+        android:background="#ff00ff00"
+        android:layout_weight="60">
         </View>
-        </LinearLayout>
+
+    </LinearLayout>
 
    <LinearLayout
        android:layout_width="wrap_content"
@@ -42,29 +39,30 @@
        android:layout_weight="1"
        android:id="@+id/rightSide">
 
-       <View
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:id="@+id/yellowView"
-           android:background="#ffffff00"
-           android:layout_weight="33">
-       </View>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:id="@+id/yellowView"
+       android:background="#ffffff00"
+       android:layout_weight="33">
+   </View>
 
-       <View
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:id="@+id/whiteView"
-           android:background="#ffffffff"
-           android:layout_weight="44">
-       </View>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:id="@+id/whiteView"
+       android:background="#ffffff"
+       android:layout_weight="44">
+        </View>
 
-       <View
-           android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:id="@+id/blueView"
-           android:background="#ff0000ff"
-           android:layout_weight="22">
-       </View>
-       </LinearLayout>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:id="@+id/blueView"
+       android:background="#ff0000ff"
+       android:layout_weight="22">
+        </View>
+
+   </LinearLayout>
 
 </LinearLayout>

@@ -62,11 +62,15 @@ public class InitialActivity extends Activity {
               tvCounter.setText("" + count);
           }
       });
+
+      tileActivity.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              startActivity(new Intent(InitialActivity.this, TileActivity.class));
+          }
+      });
+
   }
 
-    public void tileActivity (View View){
-        Intent intent = new Intent(this, TileActivity.class);
-        startActivity(intent);
-    }
 
 }
