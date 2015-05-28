@@ -40,9 +40,8 @@ public class InitialActivity extends Activity {
 
     buttonPlus.setOnClickListener(new View.OnClickListener() {
       public void onClick(View v) {
-        for (int i = 1; i < 10; i++) {
-          i = Integer.parseInt((String)tvCounter.getText());
-        }
+        counter=+1;
+        tvCounter.setText(counter+"");
       }
     });
 
