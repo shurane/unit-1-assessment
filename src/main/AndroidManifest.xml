@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nyc.c4q" >
 
-    <application android:name=".Unit1AssessmentApplication" >
+    <application android:name=".MyApplication" >
         <activity
             android:name=".InitialActivity"
             android:label="@string/title_activity_initial"
@@ -20,3 +20,5 @@
     </application>
 
 </manifest>
+
+

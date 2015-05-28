@@ -46,9 +46,11 @@ public class InitialActivity extends Activity {
         setContentView(R.layout.activity_initial);
         preferences = getPreferences(Context.MODE_PRIVATE);
 
+
         SharedPreferences sharedPref= getSharedPreferences("mypref", 0);
         Integer counter = sharedPref.getInt("counter", numCounter);
         numCounter = counter;
+
 
 
         Log.d(TAG, "onCreate()");
@@ -71,6 +73,7 @@ public class InitialActivity extends Activity {
                 counter.setText(Integer.toString(numCounter));
             }
         });
+
     }
 
 }
